@@ -1,6 +1,7 @@
 # Wallet - Expense Tracker with React Native & Express 🚀
 
-<img width="766" height="1280" alt="image" src="https://github.com/user-attachments/assets/0c9cf6fa-b301-42be-9a5e-b21c4160f9b3" />
+<img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/7665db67-2b0b-463f-a2fc-0253fb4a1c6d" />
+
 
 ## Demo App
 Experience a fully functional mobile expense tracker app built with React Native for the frontend and Express.js for the backend. Manage your finances seamlessly across iOS and Android devices.
