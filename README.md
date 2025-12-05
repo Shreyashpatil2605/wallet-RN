@@ -3,12 +3,10 @@
 <img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/7665db67-2b0b-463f-a2fc-0253fb4a1c6d" />
 
 
-## Demo App
 Experience a fully functional mobile expense tracker app built with React Native for the frontend and Express.js for the backend. Manage your finances seamlessly across iOS and Android devices.
 
 ---
 
-## 🎯 What You'll Build
 This isn't just a front-end app — it's a complete mobile application with backend integration, authentication, and cloud-based storage.
 
 - ✅ Works on **iOS & Android** (simulator or real device)  
