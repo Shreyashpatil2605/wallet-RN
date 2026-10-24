@@ -9,7 +9,7 @@ export async function getTransactionsById(req, res) {
     res.status(200).json(transactions);
   } catch (error) {
     console.log("Error in  getting transcations", error);
-    res.status(500).send({ message: "Internal Serve Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 export async function createTransaction(req, res) {
@@ -26,7 +26,7 @@ export async function createTransaction(req, res) {
     res.status(201).json(transactions[0]);
   } catch (error) {
     console.log("Error in the transcation block", error);
-    res.status(500).send({ message: "Internal Serve Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 export async function getSummaryByUserId(req, res) {
@@ -47,7 +47,7 @@ export async function getSummaryByUserId(req, res) {
     });
   } catch (error) {
     console.log("Error in the Summary block", error);
-    res.status(500).send({ message: "Internal Serve Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 export async function deleteTransactions(req, res) {
@@ -55,18 +55,18 @@ export async function deleteTransactions(req, res) {
     const { id } = req.params;
 
     if (isNaN(parseInt(id))) {
-      res.status(400).json({ message: "Invalid Transaction Id" });
+      return res.status(400).json({ message: "Invalid Transaction Id" });
     }
 
     const result = await sql`
     DELETE FROM transactions WHERE id = ${id} RETURNING *;
     `;
     if (result.length === 0) {
-      return res.status(404).send({ message: "Transactions Not Found" });
+      return res.status(404).json({ message: "Transactions Not Found" });
     }
-    res.status(200).send({ message: "Transactions deleted Successfully" });
+    res.status(200).json({ message: "Transactions deleted Successfully" });
   } catch (error) {
     console.log("Error in  getting transcations", error);
-    res.status(500).send({ message: "Internal Serve Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }

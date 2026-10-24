@@ -10,7 +10,9 @@ const rateLimiter = async (req, res, next) => {
     next();
   } catch (error) {
     console.log("Rate Limit Error", error);
-    next(error);
+    return res.status(503).json({
+      message: "Rate limiting service is unavailable. Please try again later.",
+    });
   }
 };
 export default rateLimiter;

@@ -11,13 +11,22 @@ const PORT = process.env.PORT || 5001;
 
 if (process.env.NODE_ENV === "production") job.start();
 
-app.use(rateLimiter);
-//middleWare
 app.use(express.json());
+
+app.get("/api/health", (req, res) => res.status(200).json({ status: "ok" }));
+
+app.use(rateLimiter);
 app.use("/api/transactions", transactionRoute);
 
-app.get("/api/health", (req, res) =>
-res.status(200).json({ status: "ok" }));
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+app.use((error, req, res, next) => {
+  console.error("Unhandled server error:", error);
+  if (res.headersSent) return next(error);
+  res.status(500).json({ message: "Internal Server Error" });
+});
 
 initDB().then(() => {
   app.listen(PORT, () => {

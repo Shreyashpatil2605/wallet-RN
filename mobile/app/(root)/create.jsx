@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
   ActivityIndicatorBase,
 } from "react-native";
-import { API_URL } from "../../constants/api";
+import { API_URL, parseApiResponse } from "../../constants/api";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../constants/colors";
 import { styles } from "../../assets/styles/create.styles";
@@ -64,10 +64,7 @@ const CreateScreen = () => {
         }),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to create a transactions");
-      }
+      await parseApiResponse(response);
       Alert.alert("Transactions created successfully");
       router.back();
     } catch (error) {

@@ -7,8 +7,8 @@ import {
   getTransactionsById,
 } from "../controllers/transactionControllers.js";
 const router = express.Router();
+router.get("/summary/:userId", getSummaryByUserId);
 router.get("/:userID", getTransactionsById);
 router.delete("/:id", deleteTransactions);
-router.get("/summary/:userId", getSummaryByUserId);
 router.post("/", createTransaction);
 export default router;
