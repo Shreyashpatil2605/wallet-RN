@@ -5,11 +5,11 @@ import {
   View,
   Text,
   Alert,
-  Touchable,
+
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
-  ActivityIndicatorBase,
+
 } from "react-native";
 import { API_URL, parseApiResponse } from "../../constants/api";
 import { Ionicons } from "@expo/vector-icons";
@@ -38,7 +38,8 @@ const CreateScreen = () => {
   const handleCreate = async () => {
     //validation
     if (!title.trim()) return Alert.alert("Error", "Please enter a title!");
-    if (!amount || isNaN(parseFloat(amount) || parseFloat(amount) <= 0)) {
+    const parsedAmount = parseFloat(amount);
+    if (!amount || isNaN(parsedAmount) || parsedAmount <= 0) {
       Alert.alert("Error", "Please enter a valid amount");
       return;
     }
@@ -200,7 +201,7 @@ const CreateScreen = () => {
                 style={styles.categoryIcon}
               />
               <Text
-                styles={[
+                style={[
                   styles.categoryButtonText,
                   selectCategory === category.name &&
                     styles.categoryButtonTextActive,

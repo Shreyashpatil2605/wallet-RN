@@ -1,7 +1,7 @@
 //react custom hook file
 
-import { useCallback } from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+
 import { Alert } from "react-native";
 import { API_URL, parseApiResponse } from "../constants/api";
 

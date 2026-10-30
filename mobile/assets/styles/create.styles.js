@@ -160,3 +160,4 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+//the data depends on routes then it is cakled dynamic routiinf and it can also cjhange in any point in a time making it dynamic 

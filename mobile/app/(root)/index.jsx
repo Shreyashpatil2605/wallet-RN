@@ -1,5 +1,5 @@
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
-import { Link, useRouter } from "expo-router";
+import { useUser } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
 import {
   Alert,
   FlatList,
@@ -23,7 +23,7 @@ export default function Page() {
   const router = useRouter();
   const { user } = useUser();
   const { transactions, summary, isLoading, loadData, deleteTransactions } =
-    useTransactions(user.id);
+    useTransactions(user?.id);
 
   useEffect(() => {
     loadData();
@@ -38,6 +38,7 @@ export default function Page() {
   };
 
   const getFirstName = (email) => {
+    if (!email || typeof email !== "string") return "User";
     const username = email.split("@")[0];
     //  Split by capital letters (if any)
     const parts = username.split(/(?=[A-Z])/);
@@ -47,6 +48,7 @@ export default function Page() {
     }
     //  If no capital letters → remove numbers
     const noNumbers = username.replace(/[0-9]/g, "");
+    if (!noNumbers) return "User";
 
     return noNumbers.charAt(0).toUpperCase() + noNumbers.slice(1);
   };
