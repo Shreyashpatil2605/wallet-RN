@@ -14,6 +14,7 @@ import { useTransactions } from "../../hooks/useTransactions";
 import { useEffect, useState } from "react";
 import PageLoader from "../../components/PageLoader";
 import { styles } from "../../assets/styles/home.styles";
+import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { BalanceCard } from "../../components/BalanceCard";
 import { TransactionItem } from "../../components/TransactionItem";
@@ -97,6 +98,13 @@ export default function Page() {
             >
               <Ionicons name="add" size={20} color="#FFF" />
               <Text style={styles.addButtonText}>ADD</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.settingsButton}
+              onPress={() => router.push("/settings")}
+              accessibilityLabel="Settings"
+            >
+              <Ionicons name="settings-outline" size={22} color={COLORS.text} />
             </TouchableOpacity>
             <SignOutButton />
           </View>
